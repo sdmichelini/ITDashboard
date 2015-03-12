@@ -1,0 +1,40 @@
+.content{
+	text-align: center;
+}
+
+#status{
+	width: 50px;
+}
+
+.page_title{
+	color: white;
+	background-color: #CC0000;
+	margin: 0 auto;
+	margin-top: 0px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	width: 968px;
+}
+
+.auto_width{
+	width: 968px;
+	margin: 0 auto;
+}
+
+.status_ok{
+	color: green;
+}
+
+.status_fail{
+	color: red;
+}
+
+@media (max-width: 968px){
+	.page_title{
+		width: 100%;
+	}
+
+	.auto_width{
+		width: 100%;
+	}
+}
