@@ -12,8 +12,12 @@
 	margin: 0 auto;
 	margin-top: 0px;
 	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-bottom: 10px;
 	width: 100%;
+}
+
+.half-width{
+	width: 40%;
 }
 
 .auto_width{

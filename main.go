@@ -4,35 +4,67 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
-	"html/template"
+	"io/ioutil"
+	"encoding/json"
 )
 
 type System struct{
 	AccessPoints []ItService
+	Routers []ItService
+	Servers []ItService
+	Printers []ItService
 }
 
 var services System
 
 func IndexHandler(w http.ResponseWriter, r *http.Request){
-	//Load the Templates
-	t, err := template.ParseFiles("templates/index.html")
+	//Load the Static HTML files
+	file, err := ioutil.ReadFile("html/index.html")
 
 	//Error Loading Template
 	if err != nil {
 		http.Error(w, "Internal Server Error", 500)
 		return
 	}	
-	t.Execute(w, services)
+	
+	fmt.Fprintf(w, "%s",file)
+}
+
+func GlobalServiceHandler(w http.ResponseWriter, r *http.Request){
+	buf, err := json.Marshal(services)
+
+	if err != nil {
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+
+	fmt.Fprintf(w, "%s",buf)
+}
+
+func RegisterGetHandler(w http.ResponseWriter, r *http.Request){
+	//Load the Static HTML files
+	file, err := ioutil.ReadFile("html/register.html")
+
+	//Error Loading Template
+	if err != nil {
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}	
+	
+	fmt.Fprintf(w, "%s",file)
 }
 
 func routeHandler() http.Handler {
 	router := mux.NewRouter()
 	router.HandleFunc("/", IndexHandler).Methods("GET")
+	router.HandleFunc("/services", GlobalServiceHandler).Methods("GET")
+	router.HandleFunc("/register", RegisterGetHandler).Methods("GET")
 	return router
 }
 
 func main() {
-	services = System{AccessPoints:CreateAccessPoints()}
+	services = System{AccessPoints:CreateAccessPoints(), Routers:CreateRouters(), Servers:CreateServers(), Printers:CreatePrinters()}
+	
 	fmt.Println("Started Webserver")
 	fmt.Println("Access Points: ", len(services.AccessPoints))
 	//Handle Static Routing for CSS and JS
