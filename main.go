@@ -8,13 +8,6 @@ import (
 	"encoding/json"
 )
 
-type System struct{
-	AccessPoints []ItService
-	Routers []ItService
-	Servers []ItService
-	Printers []ItService
-}
-
 var services System
 
 func IndexHandler(w http.ResponseWriter, r *http.Request){
@@ -63,10 +56,10 @@ func routeHandler() http.Handler {
 }
 
 func main() {
-	services = System{AccessPoints:CreateAccessPoints(), Routers:CreateRouters(), Servers:CreateServers(), Printers:CreatePrinters()}
-	
+	services = CreateSystem()
+
 	fmt.Println("Started Webserver")
-	fmt.Println("Access Points: ", len(services.AccessPoints))
+	fmt.Println("Services: ", len(services.Services))
 	//Handle Static Routing for CSS and JS
 	http.Handle("/static/", http.StripPrefix("/static/",http.FileServer(http.Dir("static/"))))
 

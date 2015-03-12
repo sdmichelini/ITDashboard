@@ -14,31 +14,13 @@ import (
 var PingTimeout = 3000 * time.Millisecond
 
 type ItService struct{
-	Name string
-	IpAddress string
-	Id uint
-	Status bool
+	Name string //Name of the Service
+	IpAddress string //IpAddress of the Service
+	Id uint //What type the service is
+	Status bool //Is the Serivce Up?
 }
 
-func CreateAccessPoints() []ItService{
-	service := []ItService{{Name: "Founder's Room AP", IpAddress: "10.1.0.6", Id: 1, Status: true},{Name: "Room 2 AP", IpAddress: "10.1.0.7", Id: 2, Status: true},{Name: "Cave AP", IpAddress: "10.1.0.8", Id: 2, Status: true}}
-	return service
-}
 
-func CreateRouters() []ItService{
-	service := []ItService{{Name: "Big House Router", IpAddress:"10.1.0.1", Id: 1, Status: false},{Name: "Big House Ethernet Switch", IpAddress:"10.1.0.2", Id: 2, Status: false}}
-	return service
-}
-
-func CreatePrinters() []ItService{
-	service := []ItService{{Name: "Founder's Room", IpAddress:"10.1.0.31", Id: 1, Status: true}, {Name: "Cryso Printer", IpAddress:"10.1.0.37", Id: 2, Status: true}}
-	return service
-}
-
-func CreateServers() []ItService{
-	service := []ItService{{Name: "Active Directory Server", IpAddress:"10.1.0.4", Id: 1, Status: true}, {Name: "Windows Server", IpAddress:"10.1.0.17", Id: 2, Status: true}}
-	return service
-}
 //Inspired by https://golang.org/src/net/ipraw_test.go
 /*
 @function PingService

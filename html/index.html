@@ -23,7 +23,7 @@
 	<tr>
 		<th>Name</th><th>IP Address</th><th class='content' id='status'>Status</th>
 	</tr>
-	<tr ng-repeat="x in services.AccessPoints">
+	<tr ng-repeat="x in services.Services | filter:{ Id: 0 }">
 		<td class='half-width'>{{ x.Name }}</td>
 		<td>{{ x.IpAddress }}</td>
 		<td>
@@ -38,7 +38,7 @@
 	<tr>
 		<th>Name</th><th>IP Address</th><th class='content' id='status'>Status</th>
 	</tr>
-	<tr ng-repeat="x in services.Routers">
+	<tr ng-repeat="x in services.Services | filter:{ Id: 1 }">
 		<td class='half-width'>{{ x.Name }}</td>
 		<td>{{ x.IpAddress }}</td>
 		<td>
@@ -53,7 +53,7 @@
 	<tr>
 		<th>Name</th><th>IP Address</th><th class='content' id='status'>Status</th>
 	</tr>
-	<tr ng-repeat="x in services.Printers">
+	<tr ng-repeat="x in services.Services | filter:{ Id: 2 }">
 		<td class='half-width'>{{ x.Name }}</td>
 		<td>{{ x.IpAddress }}</td>
 		<td>
@@ -68,7 +68,7 @@
 	<tr>
 		<th>Name</th><th>IP Address</th><th class='content' id='status'>Status</th>
 	</tr>
-	<tr ng-repeat="x in services.Servers">
+	<tr ng-repeat="x in services.Services | filter:{ Id: 3 }">
 		<td class='half-width'>{{ x.Name }}</td>
 		<td>{{ x.IpAddress }}</td>
 		<td>
