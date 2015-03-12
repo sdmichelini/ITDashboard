@@ -13,7 +13,7 @@
 	margin-top: 0px;
 	padding-top: 50px;
 	padding-bottom: 50px;
-	width: 968px;
+	width: 100%;
 }
 
 .auto_width{
@@ -30,9 +30,6 @@
 }
 
 @media (max-width: 968px){
-	.page_title{
-		width: 100%;
-	}
 
 	.auto_width{
 		width: 100%;

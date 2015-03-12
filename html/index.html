@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en' ng-app='itDashboard' ng-controller="itDashboardController">
+<head>
+	<title>IT Dashboard | TKE ZM | Index</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/global.css">
+
+	<script src='/static/js/angular.min.js'></script>
+</head>
+<body>
+	<header><h1 class="content page_title">IT Dashboard Index</h1></header>
+	<h2 class="content">System Statuses</h2>
+	<div class="container">
+	<h3 class="content">Access Points</h3>
+	<table class="auto_width table table-striped">
+	<tr>
+		<th>Name</th><th>IP Address</th><th class='content' id='status'>Status</th>
+	</tr>
+	<tr ng-repeat="x in services.AccessPoints">
+		<td>{{ x.Name }}</td>
+		<td>{{ x.IpAddress }}</td>
+		<td>
+			<span ng-if='x.Status!=true' class='content status_fail glyphicon glyphicon-remove' aria-hidden='true'></span>
+			<span ng-if='x.Status==true' class='content status_ok glyphicon glyphicon-ok' aria-hidden='true'></span>
+		</td>
+	</tr>
+	</table>
+	</div>
+</body>
+<script>
+function itDashboardController($scope,$http){
+	
+	$scope.services=[];
+	$http.get("http://localhost:8080/services")
+	.success(function(response){$scope.services = response;});
+}
+
+var app = angular.module('itDashboard',[]);
+
+app.controller('itDashboardController', itDashboardController);
+</script>
+</html>
