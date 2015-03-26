@@ -27,7 +27,7 @@ function itDashboardController($scope,$http){
 	$scope.onlineCount = 0;
 	$scope.offlineCount = 0;
 	$scope.services=[];
-	$http.get("http://localhost:8080/services")
+	$http.get("/services")
 	.success(function(response){$scope.services = response;
 		$scope.onlineCount = countOnline($scope.services); 
 		$scope.offlineCount = countOffline($scope.services);});

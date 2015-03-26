@@ -26,6 +26,8 @@ type AccessCode struct{
 	AccessToken []byte
 	//When the Token Expires
 	Expires time.Time
+
+	UserId uint;
 }
 
 const ACCESS_TOKEN_LENGTH = 50
@@ -58,7 +60,14 @@ func AuthenticateUser(user string, pass string, con Configuration, db * sql.DB) 
 		if strings.EqualFold(fmt.Sprintf("%s",pw),fmt.Sprintf("%x",h512.Sum(nil))){
 			b, err := CreateSessionId()
 			if b!=nil{
-				return AccessCode{AccessToken: b, Expires: time.Now().UTC().Add(24 * time.Hour) }, nil
+				a := AccessCode{AccessToken: b, Expires: time.Now().UTC().Add(24 * time.Hour) }
+				err4 := addToDatabase(a, db)
+				if err4!=nil{
+					AccessCode{AccessToken: nil, Expires: time.Now().UTC() }, err4 
+				}else{
+					return a, nil
+				}
+				
 			}else{
 				fmt.Println("Auth Error: 1")
 				return AccessCode{AccessToken: nil, Expires: time.Now().UTC() }, err
@@ -74,4 +83,11 @@ func AuthenticateUser(user string, pass string, con Configuration, db * sql.DB) 
 	//Shouldn't Get Here
 	fmt.Println("Auth Error: 4")
 	return AccessCode{AccessToken: nil, Expires: time.Now().UTC() }, fmt.Errorf("Could not authenticate user")
+}
+//Add's an Access Token to the Database
+func addToDatabase(a AccessCode, db * sql.DB) error {
+	
+	_, err := db.Exec("INSERT INTO access_token VALUES(?,?,NOW())",fmt.Sprintf("%x",a.AccessToken),1)
+
+	return err
 }

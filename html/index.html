@@ -4,6 +4,7 @@
 	<title>IT Dashboard | TKE ZM | Index</title>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/static/css/global.css">
 
 	<script src='/static/js/angular.min.js'></script>
@@ -11,7 +12,7 @@
 <body>
 	<header class='page_title'>
 		<h1 class="content">IT Dashboard Index</h1>
-		<h4 class="content">Login</h4>
+		<h4 class="content"></h4>
 	</header>
 	<h2 class="content">System Status</h2>
 	<div class='content'>
@@ -27,8 +28,8 @@
 		<td class='half-width'>{{ x.Name }}</td>
 		<td>{{ x.IpAddress }}</td>
 		<td>
-			<span ng-if='x.Status!=true' class='content status_fail glyphicon glyphicon-remove' aria-hidden='true'></span>
-			<span ng-if='x.Status==true' class='content status_ok glyphicon glyphicon-ok' aria-hidden='true'></span>
+			<span ng-if='x.Status!=true' class='status_fail glyphicon glyphicon-remove' aria-hidden='true'></span>
+			<span ng-if='x.Status==true' class='status_ok glyphicon glyphicon-ok' aria-hidden='true'></span>
 		</td>
 	</tr>
 	</table>
@@ -42,8 +43,8 @@
 		<td class='half-width'>{{ x.Name }}</td>
 		<td>{{ x.IpAddress }}</td>
 		<td>
-			<span ng-if='x.Status!=true' class='content status_fail glyphicon glyphicon-remove' aria-hidden='true'></span>
-			<span ng-if='x.Status==true' class='content status_ok glyphicon glyphicon-ok' aria-hidden='true'></span>
+			<span ng-if='x.Status!=true' class='status_fail glyphicon glyphicon-remove' aria-hidden='true'></span>
+			<span ng-if='x.Status==true' class='status_ok glyphicon glyphicon-ok' aria-hidden='true'></span>
 		</td>
 	</tr>
 	</table>
@@ -57,8 +58,8 @@
 		<td class='half-width'>{{ x.Name }}</td>
 		<td>{{ x.IpAddress }}</td>
 		<td>
-			<span ng-if='x.Status!=true' class='content status_fail glyphicon glyphicon-remove' aria-hidden='true'></span>
-			<span ng-if='x.Status==true' class='content status_ok glyphicon glyphicon-ok' aria-hidden='true'></span>
+			<span ng-if='x.Status!=true' class='status_fail glyphicon glyphicon-remove' aria-hidden='true'></span>
+			<span ng-if='x.Status==true' class='status_ok glyphicon glyphicon-ok' aria-hidden='true'></span>
 		</td>
 	</tr>
 	</table>
@@ -72,8 +73,8 @@
 		<td class='half-width'>{{ x.Name }}</td>
 		<td>{{ x.IpAddress }}</td>
 		<td>
-			<span ng-if='x.Status!=true' class='content status_fail glyphicon glyphicon-remove' aria-hidden='true'></span>
-			<span ng-if='x.Status==true' class='content status_ok glyphicon glyphicon-ok' aria-hidden='true'></span>
+			<span ng-if='x.Status!=true' class='status_fail glyphicon glyphicon-remove' aria-hidden='true'></span>
+			<span ng-if='x.Status==true' class='status_ok glyphicon glyphicon-ok' aria-hidden='true'></span>
 		</td>
 	</tr>
 	</table>
